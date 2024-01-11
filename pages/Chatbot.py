@@ -22,7 +22,7 @@ st.markdown(
 openai_api_key = st.secrets['OPENAI_API_KEY']
 path = os.path.dirname(__file__)
 
-st.title(f"💬 UMI-GPT AI Report | Universitas Muslim Indonesia {path}")
+st.title(f"💬 UMI-GPT AI Report | Universitas Muslim Indonesia")
 st.caption("🚀 UMI GPT Powered by Open AI")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "Hello saya UMI-AI Assistant! Silahkan masukkan pertanyaan kamu."}]
