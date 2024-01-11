@@ -17,8 +17,8 @@ with st.container():
         f"""
     <div class="container">
         <header>AI Report | Universitas Muslim Indonesia</header>
-        <a id="ai-report-btn" href="{st.secrets['BASE_URL']}/Chatbot" class="button-link">AI Report UMI [V2]</a>
-        <a id="ai-report-btn" href="https://chat.openai.com/g/g-NHnJaI0mv-ai-report" class="button-link">GPT 4+</a>
+        <a id="ai-report-btn" href="{st.secrets['BASE_URL']}/Chatbot" class="button-link">AI Report UMI [BETA]</a>
+        <a id="ai-report-btn" href="https://chat.openai.com/g/g-NHnJaI0mv-ai-report" class="button-link">AI Report UMI [V2]</a>
 
     </div>
 
