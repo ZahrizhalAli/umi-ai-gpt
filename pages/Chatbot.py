@@ -4,6 +4,7 @@ from langchain_experimental.agents import create_csv_agent
 from langchain_openai import ChatOpenAI
 from langchain.agents.agent_types import AgentType
 from langchain.agents import AgentExecutor
+import os
 
 st.set_page_config(layout="wide", page_icon="💬", page_title="UMI | AI Report",initial_sidebar_state="collapsed" )
 st.markdown(
@@ -16,9 +17,12 @@ st.markdown(
         """,
             unsafe_allow_html=True,
         )
-openai_api_key = st.secrets['OPENAI_API_KEY']
 
-st.title("💬 UMI-GPT AI Report | Universitas Muslim Indonesia")
+
+openai_api_key = st.secrets['OPENAI_API_KEY']
+path = os.path.dirname(__file__)
+
+st.title(f"💬 UMI-GPT AI Report | Universitas Muslim Indonesia {path}")
 st.caption("🚀 UMI GPT Powered by Open AI")
 if "messages" not in st.session_state:
     st.session_state["messages"] = [{"role": "assistant", "content": "Hello saya UMI-AI Assistant! Silahkan masukkan pertanyaan kamu."}]
@@ -26,14 +30,19 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
+
+
 if prompt := st.chat_input():
     if not openai_api_key:
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
 
+    dosen_path = os.path.join(path, 'vwDosen.csv')
+    karyawan_path = os.path.join(path , 'vwKaryawan.csv')
+
     agent = create_csv_agent(
         ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613"),
-        ["vwDosen.csv", "vwKaryawan.csv"],
+        [dosen_path, karyawan_path],
         verbose=True,
         agent_type=AgentType.OPENAI_FUNCTIONS,
     )
