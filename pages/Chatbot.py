@@ -33,7 +33,7 @@ if prompt := st.chat_input():
 
     agent = create_csv_agent(
         ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613"),
-        ["../vwDosen.csv", "../vwKaryawan.csv"],
+        ["vwDosen.csv", "vwKaryawan.csv"],
         verbose=True,
         agent_type=AgentType.OPENAI_FUNCTIONS,
     )
